@@ -1,0 +1,13 @@
+<div class="col-md-4"></div>
+    
+    <div class="col-md-4">
+      <section class="login-form">
+<%= form_for @transaction, :url => balance_path(), :html => {:id => "new-form"}, :method => :post do |f| %>
+<%= image_tag("/assets/logo2.png") %>
+    <%= f.number_field :amount, autofocus: true, :placeholder => "Amount", :class => "form-control input-lg" %>
+
+  <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Add Balance</button>
+  <div>
+<% end %>
+</section>
+</div>

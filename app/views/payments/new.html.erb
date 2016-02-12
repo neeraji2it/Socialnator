@@ -1,0 +1,15 @@
+<div class="col-md-4"></div>
+    
+    <div class="col-md-4">
+      <section class="login-form">
+<%= form_for @order, :url => payments_path, :method => :post, :html => {:autocomplete => 'off', :id => 'new-form'} do |f| %>
+<%= image_tag("/assets/logo2.png") %>
+  <%= render :partial => '/layouts/errors', :locals => {:resource => @order} %>
+    <%= f.hidden_field :express_token %>
+    <%= f.hidden_field :user_transaction_id, :value => @transaction.id %>
+    <p>Name: <%=h @order.first_name %> <%=h @order.last_name %></p>
+    <p>TODO Display order confirmation details</p>
+  <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Continue</button>
+<% end %>
+</section>
+</div>

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root :to => "home#index"
   devise_for :users
+  get '/payment/express' => 'payments#express', :as => :pay
+  get '/payments/add_balance' => 'payments#add_balance', :as => :add_balance
+  get '/payments/:id/checkout' => 'payments#checkout', :as => :checkout
+  post '/payments/balance' => 'payments#balance', :as => :balance
+  resources :payments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

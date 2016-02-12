@@ -1,0 +1,12 @@
+<div class="col-md-4"></div>
+    
+    <div class="col-md-4">
+      <section class="login-form">
+<%= form_for @transaction, :url => balance_path(), :html => {:id => "new-form"}, :method => :post do |f| %>
+<%= image_tag("/assets/logo2.png") %>
+    <%= f.number_field :amount, :value => @transaction.amount, :class => "form-control input-lg", :readonly => true %>
+    <%= link_to "Pay", pay_path(:transaction_id => @transaction.id), :class => "btn btn-lg btn-primary btn-block" %>
+  <div>
+<% end %>
+</section>
+</div>

@@ -3,7 +3,7 @@
     <div class="col-md-4">
       <section class="login-form">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put,:id => "new-form" }) do |f| %>
   <%= f.hidden_field :reset_password_token %>
 <%= image_tag("/assets/logo2.png") %>
   <%= render :partial => "/layouts/errors", :locals => {:resource => resource} %>

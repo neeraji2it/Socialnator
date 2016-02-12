@@ -18,7 +18,7 @@
   margin-top: 60px;
 }
 
-#new_user, #edit_user {
+#new-form {
   color: #5d5d5d;
   background: #f2f2f2;
   padding: 26px;
@@ -26,16 +26,16 @@
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
 }
-#new_user img, #edit_user img {
+#new-form img, #new-form img {
     display: block;
     margin: 0 auto;
     margin-bottom: 35px;
   }
-  #new_user input,
-  #new_user button, #edit_user input, #edit_user button {
+  #new-form input,
+  #new-form button, #new-form input, #new-form button {
     font-size: 18px;
     margin: 16px 0;
   }
-  #new_user > div, #edit_user > div {
+  #new-form > div, #new-form > div {
     text-align: center;
   }

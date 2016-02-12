@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211081003) do
+ActiveRecord::Schema.define(version: 20160212084616) do
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "user_id",             limit: 4
+    t.integer  "user_transaction_id", limit: 4
+    t.integer  "transaction_id",      limit: 4
+    t.string   "ip_address",          limit: 255
+    t.string   "first_name",          limit: 255
+    t.string   "last_name",           limit: 255
+    t.string   "action",              limit: 255
+    t.decimal  "amount",                            precision: 10
+    t.boolean  "success",             limit: 1
+    t.string   "authorization",       limit: 255
+    t.string   "message",             limit: 255
+    t.text     "params",              limit: 65535
+    t.string   "express_token",       limit: 255
+    t.string   "express_payer_id",    limit: 255
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+  end
+
+  create_table "user_transactions", force: :cascade do |t|
+    t.decimal  "amount",     precision: 10, default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,                default: "",         null: false

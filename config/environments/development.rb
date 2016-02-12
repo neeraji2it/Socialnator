@@ -47,6 +47,16 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal = {
+      :login => "ashokkmr098-facilitator_api1.gmail.com",
+      :password => "1381133094",
+      :signature => "AWK61.IEXg7Hbu8oFIAGiJiPUPemAj.a2-1uZdPOHxvJUVk-t1oUQJ6Y"
+    }
+    ::EXPRESS = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal)
+  end
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
