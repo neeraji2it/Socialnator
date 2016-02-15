@@ -1,0 +1,25 @@
+    <div class="col-md-4">
+      <section class="login-form">
+<%= form_for @plan, :url => post_plan_home_index_path(), :method => :post, :html => {:id => "new-form"}, :remote => true, :method => :post do |f| %>
+<%= image_tag("/assets/logo2.png") %>
+    <%= f.text_field :followers_price, autofocus: true, :placeholder => "Price", :class => "form-control input-lg" %>
+    (FOR)
+    <%= f.number_field :followers, :placeholder => "No.of Followers", :class => "form-control input-lg" %>
+
+  <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Followers</button>
+<% end %>
+</section>
+</div>
+
+    <div class="col-md-4">
+      <section class="login-form">
+<%= form_for @plan, :url => post_plan_home_index_path(),:method => :post, :html => {:id => "new-form"}, :remote => true, :method => :post do |f| %>
+<%= image_tag("/assets/logo2.png") %>
+    <%= f.text_field :likes_price, autofocus: true, :placeholder => "Price", :class => "form-control input-lg" %>
+    (FOR)
+    <%= f.number_field :likes, :placeholder => "No.of Likes", :class => "form-control input-lg" %>
+
+  <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Likes</button>
+<% end %>
+</section>
+</div>

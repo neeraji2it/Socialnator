@@ -8,3 +8,4 @@
 @user = User.new(:email => "admin@gmail.com", :password => "admin123", :password_confirmation => "admin123", :confirmation_token => nil, :confirmed_at => Time.now, :role => 'admin', :username => 'admin')
 @user.save(:validate => false)
 p @user
+Plan.create(:followers_price => 0.80, :likes_price => 1.2, :followers => 1000, :likes => 25000)

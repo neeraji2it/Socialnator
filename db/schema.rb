@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212084616) do
+ActiveRecord::Schema.define(version: 20160215100459) do
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.string   "order_type",  limit: 255
+    t.string   "status",      limit: 255
+    t.string   "url",         limit: 255
+    t.integer  "order_count", limit: 4
+    t.string   "ordid",       limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "payments", force: :cascade do |t|
     t.integer  "user_id",             limit: 4
     t.integer  "user_transaction_id", limit: 4
-    t.integer  "transaction_id",      limit: 4
     t.string   "ip_address",          limit: 255
     t.string   "first_name",          limit: 255
     t.string   "last_name",           limit: 255
@@ -30,6 +40,15 @@ ActiveRecord::Schema.define(version: 20160212084616) do
     t.string   "express_payer_id",    limit: 255
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.decimal  "followers",                  precision: 10
+    t.decimal  "likes",                      precision: 10
+    t.float    "followers_price", limit: 24
+    t.float    "likes_price",     limit: 24
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "user_transactions", force: :cascade do |t|

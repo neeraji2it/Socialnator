@@ -10,6 +10,7 @@ gem 'thin'
 gem 'quiet_assets'
 gem "twitter-bootstrap-rails"
 gem 'activemerchant', :require => 'active_merchant'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
