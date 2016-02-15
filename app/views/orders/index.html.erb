@@ -1,6 +1,6 @@
 <h1>Orders</h1>
 
-<table id="orders" class="display" data-source="<%= orders_url(format: "json") %>">
+<table id="data-table" class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Submitted</th>
@@ -13,5 +13,25 @@
     </tr>
   </thead>
   <tbody>
+  <% for order in @orders %>
+  <tr>
+    <td><%= order.created_at.strftime("%d-%m-%Y")%></td>
+    <td><%= order.ordid %></td>
+    <td><%= order.url %></td>
+    <td><%= order.order_type %></td>
+    <td><%= order.order_count%></td>
+    <td><%= order.status %></td>
+    <td>$</td>
+  </tr>
+  <% end %>
   </tbody>
 </table>
+<script>
+  $('#data-table').DataTable({
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    responsive: true
+  });
+  $('div.dataTables_filter input').addClass('form-control');
+
+  $('div.dataTables_length select').addClass('form-control');
+</script>

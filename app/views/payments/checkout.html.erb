@@ -6,7 +6,6 @@
 <%= image_tag("/assets/logo2.png") %>
     <%= f.number_field :amount, :value => @transaction.amount, :class => "form-control input-lg", :readonly => true %>
     <%= link_to "Pay", pay_path(:transaction_id => @transaction.id), :class => "btn btn-lg btn-primary btn-block" %>
-  <div>
 <% end %>
 </section>
 </div>
