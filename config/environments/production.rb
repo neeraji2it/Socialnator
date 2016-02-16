@@ -76,4 +76,25 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.default_url_options = { :host => 'http://socialnator.herokuapp.com/' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.sendgrid.net",
+    :port                 => 587,
+    #:domain               => '107.155.72.173:80',
+    :user_name            => 'Ashok098',
+    :password             => 'ashok123',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+  }
+
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal = {
+      :login => "ashokkmr098-facilitator_api1.gmail.com",
+      :password => "1381133094",
+      :signature => "AWK61.IEXg7Hbu8oFIAGiJiPUPemAj.a2-1uZdPOHxvJUVk-t1oUQJ6Y"
+    }
+    ::EXPRESS = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal)
+  end
 end
