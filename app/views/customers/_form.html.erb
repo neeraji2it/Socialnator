@@ -1,0 +1,16 @@
+<%= image_tag("/assets/logo2.png") %>
+<%= render :partial => "/layouts/errors", :locals => {:resource => @plan} %>
+<div style="position: relative;float: left;">
+    <%= f.text_field :followers_price, autofocus: true, :placeholder => "Price", :class => "form-control input-lg", :style => "width: 190px;" %>
+    </div>
+    <div style="position: relative; float: left; top: 27px; left: 45px;">(FOR)</div>
+    <div style="position: relative;float:right;">
+    <%= f.number_field :followers, :placeholder => "No.of Followers", :class => "form-control input-lg", :style => "width: 190px;"  %>
+</div>
+<div style="position: relative;float:left;">
+    <%= f.text_field :likes_price, autofocus: true, :placeholder => "Price", :class => "form-control input-lg", :style => "width: 190px;"  %>
+    </div>
+    <div style="position: relative; float: left; top: 27px; left: 45px;">(FOR)</div>
+    <div style="position: relative;float:right;">
+    <%= f.number_field :likes, :placeholder => "No.of Likes", :class => "form-control input-lg", :style => "width: 190px;"  %>
+</div>

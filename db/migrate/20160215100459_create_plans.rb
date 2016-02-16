@@ -5,6 +5,7 @@ class CreatePlans < ActiveRecord::Migration
       t.decimal :likes
       t.float :followers_price
       t.float :likes_price
+      t.integer :user_id
 
       t.timestamps null: false
     end

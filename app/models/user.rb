@@ -7,4 +7,9 @@ class User < ActiveRecord::Base
   validates :username, :first_name, :last_name, :presence => true
   has_many :payments, :dependent => :destroy
   has_many :orders, :dependent => :destroy
+  has_many :plans, :dependent => :destroy
+
+  def full_name
+  	first_name+ " " + last_name
+  end
 end

@@ -1,0 +1,6 @@
+      <section class="login-form" style="margin-top: 0px;">
+<%= form_for @plan, :url => update_price_customer_path(@plan), :method => :put, :html => {:id => "new-form"}, :remote => true do |f| %>
+<%= render :partial => "form", :locals => {:f => f} %>
+  <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Edit Price</button>
+<% end %>
+</section>

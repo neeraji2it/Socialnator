@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   get '/payments/add_balance' => 'payments#add_balance', :as => :add_balance
   get '/payments/:id/checkout' => 'payments#checkout', :as => :checkout
   post '/payments/balance' => 'payments#balance', :as => :balance
-  resources :payments, :orders
-  resources :home do
-    collection do
-      post :post_plan
+  resources :payments, :orders, :home, :dashboards
+  resources :customers do
+    member do
+      get :set_price, :edit_price
+      post :price_set
+      put :update_price
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

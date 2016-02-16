@@ -26,6 +26,10 @@ class PaymentsController < ApplicationController
   	end
   end
 
+  def index
+    @transactions = Payment.where("success = true")
+  end
+
   def checkout
   	@transaction = UserTransaction.find(params[:id])
   end

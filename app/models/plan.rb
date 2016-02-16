@@ -1,3 +1,4 @@
 class Plan < ActiveRecord::Base
-	attr_accessor :status
+	belongs_to :user
+	validates :followers_price, :followers, :likes_price, :likes, :presence => true
 end

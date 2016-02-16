@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160215100459) do
     t.decimal  "likes",                      precision: 10
     t.float    "followers_price", limit: 24
     t.float    "likes_price",     limit: 24
+    t.integer  "user_id",         limit: 4
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end

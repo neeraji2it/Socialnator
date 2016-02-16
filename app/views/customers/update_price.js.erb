@@ -1,0 +1,5 @@
+<% if @plan.errors.any? %>
+$("#edit_price").html('<%= escape_javascript render :partial => "edit_price" %>');
+<% else %>
+window.location.reload();
+<% end %>

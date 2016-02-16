@@ -1,0 +1,32 @@
+<h1>Paypal Transactions</h1>
+
+<table id="data-table" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Submitted</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for transaction in @transactions %>
+  <tr>
+    <td><%= transaction.created_at.strftime("%d-%m-%Y")%></td>
+    <td><%= transaction.first_name + transaction.last_name %></td>
+    <td><%= transaction.amount %></td>
+    <td><%= transaction.success %></td>
+    <td>$</td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+<script>
+  $('#data-table').DataTable({
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    responsive: true
+  });
+  $('div.dataTables_filter input').addClass('form-control');
+
+  $('div.dataTables_length select').addClass('form-control');
+</script>

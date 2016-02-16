@@ -1,0 +1,11 @@
+<h3>Instagram Orders</h3>
+Total Likes: <%= Order.where("order_type = 'likes'").count %> | 
+Total Followers: <%= Order.where("order_type = 'followers'").count %> | 
+Last Week (Likes): <%= Order.where("order_type = 'likes'").count %> | 
+Last Week (Followers): <%= Order.where("order_type = 'likes'").count %> | 
+Pending Orders (Likes): <%= Order.where("order_type = 'likes'").count %> | 
+Pending Orders (Followers): <%= Order.where("order_type = 'likes'").count %>
+<h3>Paypal Transactions</h3>
+Total Paypal Transactions: <%= number_to_currency(Payment.where("success = true").to_a.sum{|a| a.amount }) %>
+<h3>Today Transaction Amount</h3>
+Today Transactions: <%= number_to_currency(Payment.where("date(created_at) BETWEEN '#{Time.now}' AND '#{Time.now}' AND success = true").to_a.sum{|a| a.amount })%>
