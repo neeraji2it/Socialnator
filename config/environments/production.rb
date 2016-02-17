@@ -73,6 +73,17 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  config.action_mailer.default_url_options = { :host => 'socialnator.herokuapp.com' }
+
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal = {
+      :login => ENV["LOGIN"],
+      :password => ENV["PWD"],
+      :signature => ENV["SIGNATURE"]
+    }
+    ::EXPRESS = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal)
+  end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
