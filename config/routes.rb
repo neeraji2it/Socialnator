@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root :to => "home#index"
-  devise_for :users
+  devise_for :users do 
+    get 'sign_out' => 'devise/session#destroy'
+  end
   get '/payment/express' => 'payments#express', :as => :pay
   get '/payments/add_balance' => 'payments#add_balance', :as => :add_balance
   get '/payments/:id/checkout' => 'payments#checkout', :as => :checkout

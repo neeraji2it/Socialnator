@@ -1,32 +1,46 @@
-<h1>Customers</h1>
-
-<table id="data-table" class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Submitted</th>
-      <th>Name</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Settings</th>
-      <th>Balance</th>
-      <th>Total Spend</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% for user in @users %>
-  <tr>
-    <td><%= user.created_at.strftime("%d-%m-%Y")%></td>
-    <td><%= user.full_name %></td>
-    <td><%= user.username %></td>
-    <td><%= user.email %></td>
-    <td><%= user.plans.present? ? (link_to "Edit Price", "#EditPrice", :onclick => "javascript:edit_price(#{user.plans.first.id})", "data-toggle" => "modal") : (link_to "Set Price", "#SetPrice", :onclick => "javascript:set_price(#{user.id})", "data-toggle" => "modal") %></td>
-    <td><%= number_to_currency(user.amount) %></td>
-    <td><%=number_to_currency(Payment.where("user_id = #{user.id} AND success = true").to_a.sum{|a| a.amount}) %></td>
-  </tr>
-  <% end %>
-  </tbody>
-</table>
-<div class="modal fade" id="SetPrice">
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+<div class="row">
+  <div class="col-lg-12">
+   <h1 class="page-header">Customers</h1>
+  </div>
+</div>
+<div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <!--<div class="panel-heading">Customers (Sign Ups)</div>-->
+          <div class="panel-body">
+            <table id="data-table" data-toggle="table" data-url="/assets/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                <thead>
+                <tr>
+                  <th data-sortable="true">Submitted</th>
+                  <th data-sortable="true">Name</th>
+                  <th data-sortable="true">Username</th>
+                  <th data-sortable="true">Email</th>
+                  <th data-sortable="true">Settings</th>
+                  <th data-sortable="true">Balance</th>
+                  <th data-sortable="true">Total Spend</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% for user in @users %>
+                <tr>
+                <td><%= user.created_at.strftime("%d-%m-%Y")%></td>
+                <td><%= user.full_name %></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td><%#= user.plans.present? ? (link_to "Edit Price", "#EditPrice", :onclick => "javascript:edit_price(#{user.plans.first.id})", "data-toggle" => "modal") : (link_to "Set Price", "#SetPrice", :onclick => "javascript:set_price(#{user.id})", "data-toggle" => "modal") %></td>
+               <td><%= number_to_currency(user.amount) %></td>
+               <td><%=number_to_currency(Payment.where("user_id = #{user.id} AND success = true").to_a.sum{|a| a.amount}) %></td>
+              </tr>
+             <% end %>
+           </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div><!--/.row-->
+    </div>
+    <div class="modal fade" id="SetPrice">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -46,6 +60,7 @@
     </div>
   </div>
 </div>
+</div>
 <script>
   function set_price(user){
     $.get("/customers/"+user+"/set_price");
@@ -55,10 +70,7 @@
     $.get("/customers/"+user+"/edit_price");
   }
 
-  $('#data-table').DataTable({
-    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    responsive: true
-  });
+ 
   $('div.dataTables_filter input').addClass('form-control');
 
   $('div.dataTables_length select').addClass('form-control');
