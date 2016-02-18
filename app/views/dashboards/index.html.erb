@@ -1,27 +1,132 @@
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-<div class="row">
-  <div class="col-lg-12">
-    <h1 class="page-header">Dashboard</h1>
-  </div>
-</div><!--/.row-->
-<div class="row">
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="row">
       <div class="col-lg-12">
-        <div class="panel panel-default">
-          <!--<div class="panel-heading">All Orders</div>-->
-          <div class="panel-body">
-<h3>Instagram Orders</h3>
-Total Likes: <%= Order.where("order_type = 'likes'").count %> | 
-Total Followers: <%= Order.where("order_type = 'followers'").count %> | 
-Last Week (Likes): <%= Order.where("order_type = 'likes'").count %> | 
-Last Week (Followers): <%= Order.where("order_type = 'likes'").count %> | 
-Pending Orders (Likes): <%= Order.where("order_type = 'likes'").count %> | 
-Pending Orders (Followers): <%= Order.where("order_type = 'likes'").count %>
-<h3>Paypal Transactions</h3>
-Total Paypal Transactions: <%= number_to_currency(Payment.where("success = true").to_a.sum{|a| a.amount }) %>
-<h3>Today Transaction Amount</h3>
-Today Transactions: <%= number_to_currency(Payment.where("date(created_at) BETWEEN '#{Time.now}' AND '#{Time.now}' AND success = true").to_a.sum{|a| a.amount })%>
-</div>
-</div>
-</div>
-</div>
-</div>
+        <h2 class="page-header">Instagram Orders</h2>
+      </div>
+    </div><!--/.row-->
+    
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="panel panel-blue panel-widget ">
+          <div class="row no-padding">
+            <div class="col-sm-3 col-lg-5 widget-left">
+              <svg class="glyph stroked star"><use xlink:href="#stroked-star"/></svg>
+            </div>
+            <div class="col-sm-9 col-lg-7 widget-right">
+              <div class="large"><%= Order.where("order_type = 'likes'").count %></div>
+              <div class="text-muted">Like</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="panel panel-orange panel-widget">
+          <div class="row no-padding">
+            <div class="col-sm-3 col-lg-5 widget-left">
+               <svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
+            </div>
+            <div class="col-sm-9 col-lg-7 widget-right">
+              <div class="large"><%= Order.where("order_type = 'followers'").count %></div>
+              <div class="text-muted">Followers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="panel panel-teal panel-widget">
+          <div class="row no-padding">
+            <div class="col-sm-3 col-lg-5 widget-left">
+              <svg class="glyph stroked star"><use xlink:href="#stroked-star"/></svg>
+            </div>
+            <div class="col-sm-9 col-lg-7 widget-right">
+              <div class="large"><%= Order.where("order_type = 'likes'").count %></div>
+              <div class="text-muted">Last Week (Likes)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="panel panel-red panel-widget">
+          <div class="row no-padding">
+            <div class="col-sm-3 col-lg-5 widget-left">
+              <svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
+            </div>
+            <div class="col-sm-9 col-lg-7 widget-right">
+              <div class="large"> <%= Order.where("order_type = 'likes'").count %></div>
+              <div class="text-muted">Last Week (Followers)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/.row-->
+
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="panel panel-blue panel-widget ">
+          <div class="row no-padding">
+            <div class="col-sm-3 col-lg-5 widget-left">
+              <svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg>
+            </div>
+            <div class="col-sm-9 col-lg-7 widget-right">
+              <div class="large"> <%= Order.where("order_type = 'likes'").count %> </div>
+              <div class="text-muted">Pending Orders (Likes)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="panel panel-orange panel-widget">
+          <div class="row no-padding">
+            <div class="col-sm-3 col-lg-5 widget-left">
+              <svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg>
+            </div>
+            <div class="col-sm-9 col-lg-7 widget-right">
+              <div class="large"> <%= Order.where("order_type = 'likes'").count %></div>
+              <div class="text-muted">Pending Orders (Followers)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/.row-->
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="page-header">Paypal Transactions</h2>
+      </div>
+    </div><!--/.row-->
+    
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="panel panel-blue panel-widget ">
+          <div class="row no-padding">
+            <div class="col-sm-3 col-lg-5 widget-left">
+              <svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg>
+            </div>
+            <div class="col-sm-9 col-lg-7 widget-right">
+              <div class="large"> <%= number_to_currency(Payment.where("success = true").to_a.sum{|a| a.amount }) %></div>
+              <div class="text-muted">Total Paypal Transactions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-lg-12">
+        <h2 class="page-header">Today's Transaction Amount</h2>
+      </div>
+    </div><!--/.row-->
+      <div class="row">
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="panel panel-blue panel-widget ">
+          <div class="row no-padding">
+            <div class="col-sm-3 col-lg-5 widget-left">
+              <svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg>
+            </div>
+            <div class="col-sm-9 col-lg-7 widget-right">
+              <div class="large"> <%= number_to_currency(Payment.where("date(created_at) BETWEEN '#{Time.now}' AND '#{Time.now}' AND success = true").to_a.sum{|a| a.amount })%></div>
+              <div class="text-muted">Total Paypal Transactions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
