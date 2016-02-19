@@ -23,9 +23,8 @@
             <tr>
               <td><%= transaction.created_at.strftime("%d-%m-%Y")%></td>
               <td><%= transaction.first_name + transaction.last_name %></td>
-              <td><%= transaction.amount %></td>
+              <td><%= number_to_currency(transaction.amount) %></td>
               <td><%= transaction.success %></td>
-              <td>$</td>
             </tr>
             <% end %>
           </tbody>
