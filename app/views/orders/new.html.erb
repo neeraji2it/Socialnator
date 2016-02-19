@@ -1,0 +1,49 @@
+      <div class="col-md-4">
+      <section class="login-form">
+<%= form_for @order, :html => {:id => "new-form"} do |f| %>
+<%= f.hidden_field :order_type, :value => "followers" %>
+<%= image_tag("/assets/logo2.png") %>
+<%= render :partial => "/layouts/errors", :locals => {:resource => @order} %>
+    <%= f.url_field :url, autofocus: true, :placeholder => "Instagram URL", :class => "form-control input-lg" %>
+    <em style="font-size: 10px; position: relative; top: -12px;">EX:. http://instagram.com/justinbieberi</em>
+    <%= f.number_field :order_count, :placeholder => "Amount", :class => "form-control input-lg" %>
+    <em style="font-size: 10px; position: relative; top: -12px;">10 Minimum | 5000 maximum</em>
+  <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Add Followers</button>
+<% end %>
+</section>
+</div>
+<div class="col-md-4">
+	<section class="login-form">
+<%= form_for @order, :html => {:id => "new-form"} do |f| %>
+<%= f.hidden_field :order_type, :value => "likes" %>
+<%= image_tag("/assets/logo2.png") %>
+<%= render :partial => "/layouts/errors", :locals => {:resource => @order} %>
+    <%= f.url_field :url, autofocus: true, :placeholder => "Instagram URL", :class => "form-control input-lg" %>
+    <em style="font-size: 10px; position: relative; top: -12px;">EX:. https://instagram.com/p/9WhIqxuS7r</em>
+    <%= f.number_field :order_count, :placeholder => "Amount", :class => "form-control input-lg" %>
+    <em style="font-size: 10px; position: relative; top: -12px;">10 Minimum | 5000 maximum</em>
+
+  <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Add Likes</button>
+<% end %>
+</section>
+</div>
+<div class="col-md-4">
+	<section class="login-form">
+<%= form_for @order, :html => {:id => "new-form"} do |f| %>
+<%= f.hidden_field :order_type, :value => "likes" %>
+<%= image_tag("/assets/logo2.png") %>
+<%= render :partial => "/layouts/errors", :locals => {:resource => @order} %>
+    <%= f.text_area :url, autofocus: true, :placeholder => "Instagram URL", :class => "form-control input-lg" %>
+    <em style="font-size: 10px; position: relative;">
+    <u>How does this work?</u><br />
+    Just add a line containing the order url starting with *, a number and specify followers or likes. Remember, you can only add one order per line.<br />
+    To submit followers, you must specify "followers" as the last option:<br />
+    *http://instagram.com/badgirlriri|5000|followers<br />
+    To submit likes, you must specify "likes" as the last option:<br />
+    *http://instagram.com/p/a9Fm0Az|1000|likes</em>
+
+  <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Add Multiple</button>
+<% end %>
+</section>
+</div>
+
