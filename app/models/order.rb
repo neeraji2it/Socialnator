@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :user
+  validates :url, :presence => :true
   before_create :order_number?
   
   def order_number?

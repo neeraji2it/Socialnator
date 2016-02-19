@@ -8,11 +8,16 @@ class OrdersController < ApplicationController
   end
 
   def new
-  	@order = Order.new
+  	@follower = Order.new
+    @like = Order.new
+    @all = Order.new
   end
 
   def create
-  	@order = Order.new(new_params.merge(:user_id => current_user.id, :status => "in process"))
+  	@follower = Order.new(new_params.merge(:user_id => current_user.id, :status => "in process"))
+    @like = Order.new(new_params.merge(:user_id => current_user.id, :status => "in process"))
+    @all = Order.new
+    @order = params[:order][:order_type] == 'followers' ? @follower : @like
   	if @order.save
   		redirect_to orders_path
   	else

@@ -1,12 +1,12 @@
       <div class="col-md-4">
       <section class="login-form">
-<%= form_for @order, :html => {:id => "new-form"} do |f| %>
+<%= form_for @follower, :html => {:id => "new-form"} do |f| %>
 <%= f.hidden_field :order_type, :value => "followers" %>
 <%= image_tag("/assets/logo2.png") %>
-<%= render :partial => "/layouts/errors", :locals => {:resource => @order} %>
+<%= render :partial => "/layouts/errors", :locals => {:resource => @follower} %>
     <%= f.url_field :url, autofocus: true, :placeholder => "Instagram URL", :class => "form-control input-lg" %>
     <em style="font-size: 10px; position: relative; top: -12px;">EX:. http://instagram.com/justinbieberi</em>
-    <%= f.number_field :order_count, :placeholder => "Amount", :class => "form-control input-lg" %>
+    <%= f.number_field :order_count, :min => 10, :max => 5000, :placeholder => "Amount", :class => "form-control input-lg" %>
     <em style="font-size: 10px; position: relative; top: -12px;">10 Minimum | 5000 maximum</em>
   <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Add Followers</button>
 <% end %>
@@ -14,10 +14,10 @@
 </div>
 <div class="col-md-4">
 	<section class="login-form">
-<%= form_for @order, :html => {:id => "new-form"} do |f| %>
+<%= form_for @like, :html => {:id => "new-form"} do |f| %>
 <%= f.hidden_field :order_type, :value => "likes" %>
 <%= image_tag("/assets/logo2.png") %>
-<%= render :partial => "/layouts/errors", :locals => {:resource => @order} %>
+<%= render :partial => "/layouts/errors", :locals => {:resource => @like} %>
     <%= f.url_field :url, autofocus: true, :placeholder => "Instagram URL", :class => "form-control input-lg" %>
     <em style="font-size: 10px; position: relative; top: -12px;">EX:. https://instagram.com/p/9WhIqxuS7r</em>
     <%= f.number_field :order_count, :placeholder => "Amount", :class => "form-control input-lg" %>
@@ -29,10 +29,9 @@
 </div>
 <div class="col-md-4">
 	<section class="login-form">
-<%= form_for @order, :html => {:id => "new-form"} do |f| %>
-<%= f.hidden_field :order_type, :value => "likes" %>
+<%= form_for @all, :html => {:id => "new-form"} do |f| %>
 <%= image_tag("/assets/logo2.png") %>
-<%= render :partial => "/layouts/errors", :locals => {:resource => @order} %>
+<%= render :partial => "/layouts/errors", :locals => {:resource => @all} %>
     <%= f.text_area :url, autofocus: true, :placeholder => "Instagram URL", :class => "form-control input-lg" %>
     <em style="font-size: 10px; position: relative;">
     <u>How does this work?</u><br />
